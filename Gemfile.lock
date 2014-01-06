@@ -85,12 +85,14 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    mysql2 (0.3.14)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
     parser (2.0.0)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
+    pg (0.17.1)
     polyglot (0.3.3)
     powerpack (0.0.9)
     pry (0.9.12.2)
@@ -179,6 +181,8 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   machinist
+  mysql2
+  pg
   pry
   rails (= 4.0.0)
   redcarpet

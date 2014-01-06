@@ -36,6 +36,10 @@ gem 'compass'
 gem 'zurb-foundation', '~> 4.0.0'
 gem 'foundation-icons-sass-rails'
 
+# Supported DBs
+gem "mysql2", group: :mysql
+gem "pg", group: :postgres
+
 group :test do
   gem 'machinist'
   gem 'faker'
