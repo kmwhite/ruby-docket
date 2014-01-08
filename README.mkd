@@ -1,3 +1,26 @@
 # Docket - simple task management
 I got tired of installing a whole suite of apps when I just wanted a simple, nested TODO list. Instead, I wrote `docket`.
 
+# Installation
+## Database Configuration
+`Docket` supports multiple database types. Given that it isn't doing anything magic behind the scenes, anything that ActiveRecord supports is supported by Docket.
+
+Included are the configs for `sqlite`, `postgres`, and `mysql`. To use one, simply exclude the others from your bundle command and copy the matching sample config into place. Examples:
+
+### Sqlite
+```
+bundle install --deployment --without development test postgres mysql
+cp config/database.yml{.sample-sqlite,}
+```
+
+### Postgres
+```
+bundle install --deployment --without development test mysql sqlite
+cp config/database.yml{.sample-postgres,}
+```
+
+### MySql
+```
+bundle install --deployment --without development test postgres sqlite
+cp config/database.yml{.sample-mysql,}
+```
