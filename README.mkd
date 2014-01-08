@@ -15,12 +15,12 @@ cp config/database.yml{.sample-sqlite,}
 
 ### Postgres
 ```
-bundle install --deployment --without development test postgres sqlite
+bundle install --deployment --without development test mysql sqlite
 cp config/database.yml{.sample-postgres,}
 ```
 
 ### MySql
 ```
-bundle install --deployment --without development test mysql sqlite
+bundle install --deployment --without development test postgres sqlite
 cp config/database.yml{.sample-mysql,}
 ```
