@@ -12,9 +12,6 @@ gem 'devise'
 # Markdown Support
 gem 'redcarpet'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -39,6 +36,7 @@ gem 'foundation-icons-sass-rails'
 # Supported DBs
 gem "mysql2", group: :mysql
 gem "pg", group: :postgres
+gem 'sqlite3', group: :sqlite
 
 group :test do
   gem 'machinist'
