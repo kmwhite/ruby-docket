@@ -35,3 +35,5 @@ def login_user(user)
   fill_in 'user_password', with: 'pass123worD!'
   click_button 'Sign in'
 end
+
+module Integration; end
