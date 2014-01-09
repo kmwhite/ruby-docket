@@ -17,3 +17,5 @@
 
 # Ignore coverage data
 /coverage
+
+config/database.yml
