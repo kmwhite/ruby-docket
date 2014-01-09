@@ -5,13 +5,13 @@ class UserTest < ActionDispatch::IntegrationTest
     @user = User.make!(name: 'John Doe', password: 'pass123worD!')
   end
 
-  test 'should be able to login' do
+  test 'User login' do
     login_user(@user)
     assert_match current_path, '/'
     assert_match /Signed in successfully/, page.body
   end
 
-  test 'should be able to register a new account' do
+  test 'New account registration' do
     team = Team.make!
     visit new_user_registration_path
     fill_in 'user_name', with: 'John Doe'
@@ -25,7 +25,7 @@ class UserTest < ActionDispatch::IntegrationTest
     assert_match /Welcome! You have signed up successfully/, page.body
   end
 
-  test 'should be able to edit an account' do
+  test 'Editing an account' do
     login_user(@user)
     click_link 'John Doe'
     fill_in 'user_name', with: 'Jane Doe'
@@ -35,7 +35,7 @@ class UserTest < ActionDispatch::IntegrationTest
     assert_match /Jane Doe/, page.body
   end
 
-  test 'should be able to close an account' do
+  test 'Closing an account' do
     login_user(@user)
     click_link 'John Doe'
     assert_difference 'User.count', -1 do
