@@ -28,3 +28,10 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
 end
+
+def login_user(user)
+  visit new_user_session_path
+  fill_in 'user_email', with: user.email
+  fill_in 'user_password', with: 'pass123worD!'
+  click_button 'Sign in'
+end

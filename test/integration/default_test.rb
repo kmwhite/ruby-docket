@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class DefaultTest < ActionDispatch::IntegrationTest
   test 'should load the landing page' do
     visit '/'
