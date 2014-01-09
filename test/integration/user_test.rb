@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTest < ActionDispatch::IntegrationTest
+class Integration::UserTest < ActionDispatch::IntegrationTest
   setup do
     @user = User.make!(name: 'John Doe', password: 'pass123worD!')
   end
@@ -20,7 +20,7 @@ class UserTest < ActionDispatch::IntegrationTest
     fill_in 'user_password_confirmation', with: 'pass123worD!'
     select team.name, from: 'user_team_id'
     click_button 'Sign up'
-    
+
     assert_match current_path, '/'
     assert_match /Welcome! You have signed up successfully/, page.body
   end
