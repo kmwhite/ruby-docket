@@ -26,6 +26,6 @@ module Formatter
   end
 
   def self.format_markdown(str)
-    !str.nil? ?  MARKDOWN.render(str) : ''
+    !str.nil? ? MARKDOWN.render(str) : ''
   end
 end
