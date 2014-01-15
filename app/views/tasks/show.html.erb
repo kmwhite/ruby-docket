@@ -62,10 +62,8 @@
 <div class="row">
   <div class="large-12 columns">
     <strong>Body:</strong><br>
-    <div class="panel">
-      <div style="padding:10px">
-        <%= @task.formatted_body.html_safe %>
-      </div>
+    <div class="panel markdown" style="padding:50px">
+      <%= @task.formatted_body.html_safe %>
     </div>
   </div>
 </div>
