@@ -1,8 +1,8 @@
 module Formatter
 
-  DATE_FORMAT='%Y-%m-%d'
+  require 'github/markup'
 
-  MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+  DATE_FORMAT='%Y-%m-%d'
 
   def self.format_date(date)
     date.try(:strftime, DATE_FORMAT) || '(null)'
@@ -21,6 +21,6 @@ module Formatter
   end
 
   def self.format_markdown(str)
-    !str.nil? ?  MARKDOWN.render(str) : ''
+    !str.nil? ? GitHub::Markup.render('body.markdown', str) : ''
   end
 end

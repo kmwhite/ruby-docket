@@ -10,7 +10,8 @@ gem 'ancestry'
 gem 'devise'
 
 # Markdown Support
-gem 'redcarpet'
+gem 'github-markdown'
+gem 'github-markup'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
