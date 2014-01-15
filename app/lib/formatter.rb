@@ -2,7 +2,12 @@ module Formatter
 
   DATE_FORMAT='%Y-%m-%d'
 
-  MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+  MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+                                     :tables => true,
+                                     :no_intra_emphasis => true,
+                                     :fenced_code_blocks => true,
+                                     :autolink => true,
+                                     :space_after_headers => true)
 
   def self.format_date(date)
     date.try(:strftime, DATE_FORMAT) || '(null)'
