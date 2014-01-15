@@ -68,6 +68,8 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     fssm (0.2.10)
+    github-markdown (0.6.3)
+    github-markup (1.0.0)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -119,7 +121,6 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redcarpet (3.0.0)
     rubocop (0.15.0)
       parser (~> 2.0)
       powerpack (~> 0.0.6)
@@ -178,6 +179,8 @@ DEPENDENCIES
   devise
   faker
   foundation-icons-sass-rails
+  github-markdown
+  github-markup
   jquery-rails
   jquery-ui-rails
   machinist
@@ -185,7 +188,6 @@ DEPENDENCIES
   pg
   pry
   rails (= 4.0.0)
-  redcarpet
   rubocop
   sass-rails (~> 4.0.0)
   sdoc
