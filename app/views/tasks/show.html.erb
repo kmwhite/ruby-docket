@@ -68,6 +68,15 @@
   </div>
 </div>
 
+<br>
+
+<div class="row">
+  <div class="large-12 columns">
+    <strong>Comments:</strong><br>
+    <hr>
+    <%= render partial: 'comment', collection: @task.comments %>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', :back %>
