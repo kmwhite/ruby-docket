@@ -21,4 +21,8 @@ class Comment < ActiveRecord::Base
   def deleted?
     !deleted_at.nil?
   end
+
+  def descriptor
+    OpenSSL::Digest::SHA256.hexdigest([id,body,created_at].join('-'))
+  end
 end

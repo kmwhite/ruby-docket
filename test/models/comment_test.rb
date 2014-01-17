@@ -48,6 +48,14 @@ class CommentTest < ActiveSupport::TestCase
     [grandparent, parent, child].each_with_index do |node, idx|
       assert_equal idx, node.depth
     end
+  end
 
+  test 'descriptor' do
+    c = Comment.make(body: 'Hello World!')
+    hash = OpenSSL::Digest::SHA256.hexdigest(
+      [c.id, c.body, c.created_at].join('-')
+    )
+
+    assert_equal c.descriptor, hash
   end
 end
