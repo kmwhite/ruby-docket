@@ -31,7 +31,7 @@ gem 'turbolinks'
 
 # Foundation is our frontend framework
 gem 'compass'
-gem 'zurb-foundation', '~> 4.0.0'
+gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 
 # Supported DBs
