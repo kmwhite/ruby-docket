@@ -13,7 +13,34 @@
 
   <body>
 
+    <!-- Header and Nav -->
+    <div class="panel" data-magellan-expedition="fixed">
+      <h1>
+        <%= image_tag('clipboard.png', size: '20x14') %> Docket <small>simple task management</small>
+      </h1>
+      <hr>
+      <div>
+        <dl class="sub-nav">
+          <div class="large-10 columns">
+            <dd data-magellan-arrival="home"><a href="/"><%= Icon.home %> Home</a></dd>
+            <dd data-magellan-arrival="teams"><a href="/teams"><%= Icon.team %> Teams</a></dd>
+            <dd data-magellan-arrival="projects"><a href="/projects"><%= Icon.projects %> Projects</a></dd>
+          </div>
+          <div class="large-2 columns">
+            <%- if user_signed_in? -%>
+            <dd data-magellan-arrival="settings"><%= link_to "#{Icon.user} #{current_user.name}".html_safe, edit_user_registration_path %></dd>
+            <dd data-magellan-arrival="signout"><%= link_to "#{Icon.logout} Logout".html_safe, destroy_user_session_path, :method => :delete %></dd>
+            <%- else -%>
+            <dd data-magellan-arrival="signin"><%= link_to('Sign in!', '/users/sign_in') %></dd>
+            <%- end -%>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <!-- End Header and Nav -->
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
+
   </body>
 </html>
