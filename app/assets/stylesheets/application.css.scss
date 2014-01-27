@@ -26,6 +26,18 @@ body {
   min-height: 100%;
 }
 
+div.flash-message {
+  padding: 10px;
+}
+
+div.notice {
+  background-color: #82ca9d;
+}
+
+div.alert {
+  background-color: #f7977a;
+}
+
 .size-12 {
   font-size: 12pt;
 }
