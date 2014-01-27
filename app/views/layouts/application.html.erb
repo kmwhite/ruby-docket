@@ -39,8 +39,10 @@
     </div>
     <!-- End Header and Nav -->
 
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+    <div class="content">
+      <%= yield %>
+      <%= javascript_include_tag "application" %>
+    </div>
 
   </body>
 </html>
