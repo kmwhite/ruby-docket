@@ -1,5 +1,9 @@
 module Icon
 
+  def self.clipboard
+    '<i class="fi-clipboard-notes"></i>'.html_safe
+  end
+
   def self.user
     '<i class="fi-torso size-12"></i>'.html_safe
   end
