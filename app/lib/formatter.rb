@@ -8,8 +8,8 @@ module Formatter
     date.try(:strftime, DATE_FORMAT) || '(null)'
   end
 
-  def self.format_time(time)
-    time.to_formatted_s(:long)
+  def self.format_time(time, options = {format: '%Y-%m-%d %H:%M:%S'})
+    time.strftime(options[:format])
   end
 
   def self.format_percent(pct)
