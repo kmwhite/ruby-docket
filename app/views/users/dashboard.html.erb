@@ -1,9 +1,9 @@
-<% content_for(:title) { 'User Dashboard' } %>
+<% content_for(:title) { "#{current_user.name}'s Dashboard" } %>
 
 <h4 class='title'>Projects</h4><hr>
 <div class="row">
   <div class="large-6 columns">
-    <div class="container">
+    <div class="container" id='db-projects-open'>
       <h5 class='subtitle'>Open</h5>
       <div class="row-container">
         <% current_user.projects.incomplete.each do |project| %>
@@ -24,8 +24,8 @@
   </div>
 
   <div class="large-6 columns">
-    <div class="container">
-      <h5>Recently Completed</h5>
+    <div class="container" id='db-projects-rc'>
+      <h5 class='subtitle'>Recently Completed</h5>
       <div class="row-container">
         <% current_user.projects.complete.recent.each do |project| %>
           <%= link_to(project, {class: 'completed', id: "project-#{project.id}"}) do %>
@@ -50,7 +50,7 @@
 <h4 class='title'>Tasks</h4><hr>
 <div class="row">
   <div class="large-6 columns">
-    <div class="container">
+    <div class="container" id='db-tasks-owned'>
       <h5 class='subtitle'>Owned</h5>
       <div class="row-container">
         <% current_user.owned.incomplete.each do |task| %>
@@ -68,8 +68,8 @@
   </div>
 
   <div class="large-6 columns">
-    <div class="container">
-      <h5>Reported</h5>
+    <div class="container" id='db-tasks-reported'>
+      <h5 class='subtitle'>Reported</h5>
       <div class="row-container">
         <% current_user.reported.incomplete.each do |task| %>
           <%= link_to(task, id: "task-#{task.id}") do %>
