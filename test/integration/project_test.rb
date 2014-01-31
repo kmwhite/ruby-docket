@@ -6,7 +6,7 @@ class Integration::ProjectTest < ActionDispatch::IntegrationTest
     @proj = Project.make!(team: @user.team)
   end
 
-  test 'Team Index' do
+  test 'Project Index' do
     other_team = Team.make!
     other_proj = Project.make!(team: other_team)
 
