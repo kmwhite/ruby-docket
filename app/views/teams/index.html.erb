@@ -1,16 +1,16 @@
 <% content_for(:title) { "Team List - #{current_user.name}" } if user_signed_in? %>
 
 <div class="row">
-  <div class="large-8 large-offset-1 columns">
+  <div class="large-10 columns">
     <h4 class='title'>Teams</h4>
   </div>
-  <div class="large-2 columns">
+  <div class="large-1 columns">
     <%= link_to new_team_path do %> <span class="inline tiny button">New Team</span> <% end %>
   </div>
 </div>
 
 <div class="row">
-  <table id='teams-list' class="tablesorter large-10 large-offset-1">
+  <table id='teams-list' class="tablesorter">
     <thead>
       <tr>
         <th class="large-1"><small>Toolbox</small></th>
