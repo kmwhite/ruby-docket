@@ -1,39 +1,42 @@
+<% content_for(:title) { "Team List - #{current_user.name}" } if user_signed_in? %>
+
 <div class="row">
-  <div class="large-10 columns">
-    <strong>Listing teams</strong>
+  <div class="large-8 large-offset-1 columns">
+    <h4 class='title'>Teams</h4>
   </div>
   <div class="large-2 columns">
-      <%= link_to new_team_path do %>
-        <span class="tiny secondary button">New Team</span>
-      <% end %>
+    <%= link_to new_team_path do %> <span class="inline tiny button">New Team</span> <% end %>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-3 columns">
-    <strong>Name</strong>
-  </div>
-  <div class="large-7 columns">
-    <strong>Users</strong>
-  </div>
-  <div class="large-2 columns"> </div>
+  <table id='teams-list' class="tablesorter large-10 large-offset-1">
+    <thead>
+      <tr>
+        <th class="large-1"><small>Toolbox</small></th>
+        <th class="large-2">Name</th>
+        <th class="large-2">Users</th>
+        <th class="large-4">Open Projects</th>
+        <th class="large-3">Recently Completed Projects</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td>
+          <%= link_to edit_team_path(team), title: 'Edit Team' do %>
+            <%= Icon.edit %>
+          <% end %>
+          <%= link_to team, title: 'Delete Team', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= Icon.delete %>
+          <% end %>
+        </td>
+        <td> <%= link_to(team.name, team, id: "team-#{team.id}") %> </td>
+        <td> <%= team.user_names %> </td>
+        <td> <%= team.projects.incomplete.map(&:name).join(', ') %> </td>
+        <td> <%= team.projects.complete.recent.map(&:name).join(', ') %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
-
-<% @teams.each do |team| %>
-  <div class="row">
-    <div class="large-3 columns">
-      <%= link_to(team.name, team) %>
-    </div>
-    <div class="large-7 columns">
-      <small><%= team.user_names %></small>
-    </div>
-    <div class="large-2 columns">
-      <%= link_to edit_team_path(team), title: 'Edit Team' do %>
-        <%= Icon.edit %>
-      <% end %>
-      <%= link_to team, title: 'Delete Team', method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <%= Icon.delete %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
