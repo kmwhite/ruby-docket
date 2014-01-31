@@ -1,87 +1,93 @@
 <% content_for(:title) { "#{current_user.name}'s Dashboard" } %>
 
-<h4 class='title'>Projects</h4><hr>
 <div class="row">
-  <div class="large-6 columns">
-    <div class="container" id='db-projects-open'>
-      <h5 class='subtitle'>Open</h5>
-      <div class="row-container">
-        <% current_user.projects.incomplete.each do |project| %>
-          <%= link_to(project, id: "project-#{project.id}") do %>
-            <div class="row row-item">
-              <div class="large-2 columns toolbox">
-                &nbsp;
-              </div>
-              <span class="large-4 columns ellipsis name"> <%= project.name %> </span>
-              <span class="large-6 columns ellipsis desc">
-                <%= project.description %>
-              </span>
-            </div>
-          <% end %>
-        <% end %>
+  <div class="large-10 large-offset-1 columns"> 
+
+    <h4 class='title'>Projects</h4><hr>
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="container" id='db-projects-open'>
+          <h5 class='subtitle'>Open</h5>
+          <div class="row-container">
+            <% current_user.projects.incomplete.each do |project| %>
+              <%= link_to(project, id: "project-#{project.id}") do %>
+                <div class="row row-item">
+                  <div class="large-2 columns toolbox">
+                    &nbsp;
+                  </div>
+                  <span class="large-4 columns ellipsis name"> <%= project.name %> </span>
+                  <span class="large-6 columns ellipsis desc">
+                    <%= project.description %>
+                  </span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="large-6 columns">
+        <div class="container" id='db-projects-rc'>
+          <h5 class='subtitle'>Recently Completed</h5>
+          <div class="row-container">
+            <% current_user.projects.complete.recent.each do |project| %>
+              <%= link_to(project, {class: 'completed', id: "project-#{project.id}"}) do %>
+                <div class="row row-item">
+                  <div class="large-2 columns toolbox">
+                    <small><%= Formatter.format_time(project.completed_at) %></small>
+                  </div>
+                  <span class="large-4 columns ellipsis name"> <%= project.name %> </span>
+                  <span class="large-6 columns ellipsis desc">
+                    <%= project.description %>
+                  </span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="large-6 columns">
-    <div class="container" id='db-projects-rc'>
-      <h5 class='subtitle'>Recently Completed</h5>
-      <div class="row-container">
-        <% current_user.projects.complete.recent.each do |project| %>
-          <%= link_to(project, {class: 'completed', id: "project-#{project.id}"}) do %>
-            <div class="row row-item">
-              <div class="large-2 columns toolbox">
-                <small><%= Formatter.format_time(project.completed_at) %></small>
-              </div>
-              <span class="large-4 columns ellipsis name"> <%= project.name %> </span>
-              <span class="large-6 columns ellipsis desc">
-                <%= project.description %>
-              </span>
-            </div>
-          <% end %>
-        <% end %>
+    <br>&nbsp;<br>
+
+    <h4 class='title'>Tasks</h4><hr>
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="container" id='db-tasks-owned'>
+          <h5 class='subtitle'>Owned</h5>
+          <div class="row-container">
+            <% current_user.owned.incomplete.each do |task| %>
+              <%= link_to(task, id: "task-#{task.id}") do %>
+                <div class="row row-item">
+                  <div class="large-2 columns toolbox">
+                    &nbsp;
+                  </div>
+                  <span class="large-10 columns ellipsis name"> <%= task.name %> </span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="large-6 columns">
+        <div class="container" id='db-tasks-reported'>
+          <h5 class='subtitle'>Reported</h5>
+          <div class="row-container">
+            <% current_user.reported.incomplete.each do |task| %>
+              <%= link_to(task, id: "task-#{task.id}") do %>
+                <div class="row row-item">
+                  <div class="large-2 columns toolbox">
+                    &nbsp;
+                  </div>
+                  <span class="large-10 columns ellipsis name"> <%= task.name %> </span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<br>&nbsp;<br>
-
-<h4 class='title'>Tasks</h4><hr>
-<div class="row">
-  <div class="large-6 columns">
-    <div class="container" id='db-tasks-owned'>
-      <h5 class='subtitle'>Owned</h5>
-      <div class="row-container">
-        <% current_user.owned.incomplete.each do |task| %>
-          <%= link_to(task, id: "task-#{task.id}") do %>
-            <div class="row row-item">
-              <div class="large-2 columns toolbox">
-                &nbsp;
-              </div>
-              <span class="large-10 columns ellipsis name"> <%= task.name %> </span>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class="large-6 columns">
-    <div class="container" id='db-tasks-reported'>
-      <h5 class='subtitle'>Reported</h5>
-      <div class="row-container">
-        <% current_user.reported.incomplete.each do |task| %>
-          <%= link_to(task, id: "task-#{task.id}") do %>
-            <div class="row row-item">
-              <div class="large-2 columns toolbox">
-                &nbsp;
-              </div>
-              <span class="large-10 columns ellipsis name"> <%= task.name %> </span>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
   </div>
 </div>
