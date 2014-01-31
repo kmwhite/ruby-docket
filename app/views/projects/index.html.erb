@@ -1,9 +1,14 @@
+<% content_for(:title) { "Project List - #{current_user.name}" } %>
+
 <div class="row">
   <div class="large-10 columns">
-    <strong><%= current_user.team.name %> Projects:</strong>
+    <h4 class='title'><%= current_user.team.name %> Projects:</h4>
+  </div>
+  <div class="large-1 columns">
+    <%= link_to new_project_path do %> <span class="inline tiny button">New Project</span> <% end %>
   </div>
 </div>
 
-<br>
-
-<%= render 'shared/proj_list', projects: @projects %>
+<div class="row">
+  <%= render 'shared/project_list_table', projects: @projects %>
+</div>

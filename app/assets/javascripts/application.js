@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
+//= require jquery-tablesorter
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
 $(document).foundation();
+
+$(function(){ $(document).foundation(); });

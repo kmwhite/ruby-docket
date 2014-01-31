@@ -1,0 +1,34 @@
+
+  <table id='projects-list' class="tablesorter">
+    <thead>
+      <tr>
+        <th class="large-1"><small>Toolbox</small></th>
+        <th class="large-6">Name</th>
+        <th class="large-1">Due Date</th>
+        <th class="large-1">Completion</th>
+        <th class="large-1">Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% projects.each do |project| %>
+      <tr>
+        <td>
+          <%= link_to edit_project_path(project) do %>
+            <%= Icon.edit %>
+          <% end %>
+          <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= Icon.delete %>
+          <% end if project.deletable? %>
+          <%= link_to "#stats-#{project.id}" do %>
+            <%= Icon.graph %>
+          <% end %>
+        </td>
+        <td> <%= link_to project, id: "project-#{project.id}" do %> <%= project.name %> <span class='disabled'><%= project.description %></span> <% end %>
+        </td>
+        <td> <%= Formatter.format_date(project.due_date) %> </td>
+        <td> <%= project.completed_at.try(:to_formatted_s, :long) || 'incomplete' %> </td>
+        <td> <%= project.team_name %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

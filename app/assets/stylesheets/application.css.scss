@@ -9,19 +9,34 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+
  *= require jquery.ui.datepicker
+ *= require jquery-tablesorter/theme.grey
  */
 
- @import "foundation_and_overrides";
- @import "foundation-icons";
- @import url(http://fonts.googleapis.com/css?family=Share+Tech);
+@import "foundation_and_overrides";
+@import "foundation-icons";
+@import "markdown";
+
+@import url(http://fonts.googleapis.com/css?family=Share+Tech);
 
 html {
   height: 100%;
 }
 body {
   min-height: 100%;
+}
+
+div.flash-message {
+  padding: 10px;
+}
+
+div.notice {
+  background-color: #82ca9d;
+}
+
+div.alert {
+  background-color: #f7977a;
 }
 
 .size-12 {
@@ -41,11 +56,15 @@ body {
 }
 
 .row-container {
-  max-height: 300px;
-  overflow: scroll;
+  min-height: 5em;
+  max-height: 10em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid #dddddd;
 }
 
 .embedded-pct {
+  margin: 0 auto;
   text-align: center;
   font-size: 0.75em;
 }
@@ -58,4 +77,49 @@ body {
 
 .disabled {
   opacity: 0.5;
+}
+
+.ancestry {
+  opacity: 0.25;
+}
+
+.content {
+  margin: 0px auto;
+  padding: 0 2em 1em 2em;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  // IE 6+, FF 7+, Op 11+, Saf 1.3+, Chr 1+
+  -o-text-overflow: ellipsis;  // for Opera 9 & 10
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+}
+
+a *.row-item { color: black; }
+.row-item {
+  vertical-align: middle;
+  padding: 0 10px 0 10px;
+  .toolbox {
+    background-color: #ffffff;
+    border: 1px solid #f2f2f2;
+  }
+}
+
+.name {
+}
+
+.desc {
+  opacity: 0.5;
+}
+
+.inline {
+  display: inline-block;
+  vertical-align: middle;
 }

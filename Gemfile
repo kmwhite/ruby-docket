@@ -25,13 +25,17 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery-tablesorter", "~> 1.9.5"
+
+# Enable gravatar images
+gem 'gravatar_image_tag'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Foundation is our frontend framework
 gem 'compass'
-gem 'zurb-foundation', '~> 4.0.0'
+gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 
 # Supported DBs
