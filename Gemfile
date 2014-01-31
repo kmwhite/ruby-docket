@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery-tablesorter", "~> 1.9.5"
 
 # Enable gravatar images
 gem 'gravatar_image_tag'
