@@ -14,7 +14,6 @@ class Integration::ProjectTest < ActionDispatch::IntegrationTest
 
     visit '/projects'
 
-    binding.pry
     assert page.has_xpath?("//*[@id='project-#{@proj.id}']")
     assert page.has_no_xpath?("//*[@id='project-#{other_proj.id}']")
   end
