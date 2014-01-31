@@ -1,0 +1,38 @@
+<% tasks.each do |task| %>
+<div class="row">
+  <div class="large-1 columns">
+     <%= link_to edit_task_path(task), title: 'Edit Task' do %>
+       <%= Icon.edit %>
+     <%- end -%>
+     <%= link_to new_task_path(task, task: {project_id: task.project_id, parent_id: task.id}), title: 'New Subtask' do %>
+       <%= Icon.new %>
+     <%- end -%>
+     <%- if task.complete? -%>
+       <%= link_to uncomplete_task_path(task), method: :post do %>
+         <%= Icon.uncomplete %>
+       <%- end -%>
+     <%- else -%>
+       <%= link_to complete_task_path(task), method: :post do %>
+         <%= Icon.complete %>
+       <%- end if task.completable? -%>
+     <%- end -%>
+     <%= link_to task, title: 'Delete Task', method: :delete, data: { confirm: 'Are you sure?' } do %>
+       <%= Icon.delete %>
+     <% end if task.destroyable? %>
+  </div>
+  <div class="large-7 columns">
+    <%- if task.root? -%>
+      <%= link_to task.name, task, id: "task-#{task.id}" %>
+    <%- else -%>
+      <span class='ancestry'><%= '==' * task.ancestors.count %></span> <%= link_to task.name %>
+    <%- end -%>
+  </div>
+  <div class="large-1 columns"> <%= task.estimate || 0.0 %> </div>
+  <div class="large-1 columns"> <%= task.completed_at || 'incomplete' %> </div>
+  <div class="large-1 columns"> <small> Reporter: <%= task.reporter.try(:name) || 'unreported' %> </small> </div>
+  <div class="large-1 columns"> <small> Owner: <%= task.owner.try(:name) || 'unassigned' %> </small> </div>
+</div>
+
+<%- if task.has_children? -%><%= render 'shared/task_list_tree', tasks: task.children %><%- end -%>
+
+<% end %>

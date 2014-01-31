@@ -51,8 +51,6 @@
 <hr>
 <div class="row">
   <div class="large-12 columns">
-    <%- @project.tasks.roots.each do |task| -%>
-      <%= render('shared/task_list', task: task) -%>
-    <%- end -%>
+    <%= render 'shared/task_list_tree', { tasks: @project.tasks.roots } %> 
   </div>
 </div>
