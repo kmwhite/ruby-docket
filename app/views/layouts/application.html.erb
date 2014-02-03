@@ -37,15 +37,17 @@
         </div>
       </dl>
 
-      <% if notice %>
-        <div id="notice" class="large-12 radius notice flash-message"><%= notice %></div>
-      <% end %>
-      <% if alert %>
-        <div id="alert" class="large-12 radius alert flash-message"><%= alert %></div>
-      <% end %>
-
     </div>
     <!-- End Header and Nav -->
+
+    <div class="flash">
+    <% if notice %>
+      <div id="notice" class="large-12 radius notice flash-message"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div id="alert" class="large-12 radius alert flash-message"><%= alert %></div>
+    <% end %>
+    </div>
 
     <div class="content">
       <div class="row">
