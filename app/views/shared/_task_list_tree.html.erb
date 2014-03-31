@@ -33,6 +33,6 @@
   <div class="large-1 columns"> <small> <%= task.owner.try(:name) || 'unassigned' %> </small> </div>
 </div>
 
-<%- if task.has_children? -%><%= render 'shared/task_list_tree', tasks: task.children.order(:created_at) %><%- end -%>
+<%- if task.has_children? -%><%= render 'shared/task_list_tree', tasks: task.ordered_children %><%- end -%>
 
 <% end %>
