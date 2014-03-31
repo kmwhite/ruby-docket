@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery-tablesorter
+//= require chosen-jquery
+//= require scaffold
 //= require foundation
 //= require turbolinks
 //= require_tree .
