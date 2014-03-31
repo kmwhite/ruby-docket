@@ -53,7 +53,7 @@
     <hr>
     <div class="row">
       <div class="large-12 columns">
-        <%= render 'shared/task_list_tree', { tasks: @project.tasks.roots } %>
+        <%= render 'shared/task_list_tree', { tasks: @project.tasks.roots.order(:created_at) } %>
       </div>
     </div>
   </div>
