@@ -27,12 +27,12 @@
       <span class='ancestry'><%= '==' * task.ancestors.count %></span> <%= link_to task.name %>
     <%- end -%>
   </div>
-  <div class="large-1 columns"> <%= task.estimate || 0.0 %> </div>
-  <div class="large-1 columns"> <%= task.completed_at || 'incomplete' %> </div>
-  <div class="large-1 columns"> <small> Reporter: <%= task.reporter.try(:name) || 'unreported' %> </small> </div>
-  <div class="large-1 columns"> <small> Owner: <%= task.owner.try(:name) || 'unassigned' %> </small> </div>
+  <div class="large-1 columns"> <small> <%= task.estimate || 0.0 %> </small> </div>
+  <div class="large-1 columns"> <small> <%= task.completed_at || 'incomplete' %> </small> </div>
+  <div class="large-1 columns"> <small> <%= task.reporter.try(:name) || 'unreported' %> </small> </div>
+  <div class="large-1 columns"> <small> <%= task.owner.try(:name) || 'unassigned' %> </small> </div>
 </div>
 
-<%- if task.has_children? -%><%= render 'shared/task_list_tree', tasks: task.children %><%- end -%>
+<%- if task.has_children? -%><%= render 'shared/task_list_tree', tasks: task.ordered_children %><%- end -%>
 
 <% end %>

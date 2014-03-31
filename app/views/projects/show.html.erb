@@ -1,56 +1,66 @@
 <div class="row">
-  <div class="large-12 columns">
-    <strong>Name:</strong><br>
-    <%= @project.name %>
+  <div class="large-9 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <strong>Name:</strong><br>
+        <%= @project.name %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <strong>Description:</strong><br>
+        <%= @project.description %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <strong>Completed at:</strong><br>
+        <%= if @project.complete?
+          Formatter.format_time(@project.completed_at)
+        else
+          if @project.completable?
+            link_to('mark complete!', complete_project_path(@project))
+          else
+            '<a class="disabled">cannot complete with open tasks</a>'.html_safe
+          end
+        end %>
+      </div>
+
+      <div class="large-6 columns">
+        <strong>Team:</strong><br>
+        <%= link_to(@project.team_name, @project.team) %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="large-10 columns">
+        <strong>Tasks:</strong>
+      </div>
+      <div class="large-2 columns">
+        <%= link_to(new_task_path(task: {project_id: @project.id, parent_id: nil})) do -%>
+          <span class="button secondary tiny">New Task</span>
+        <%- end -%>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= render 'shared/task_list_tree', { tasks: @project.tasks.roots.order(:created_at) } %>
+      </div>
+    </div>
   </div>
-</div>
 
-<br>
-
-<div class="row">
-  <div class="large-12 columns">
-    <strong>Description:</strong><br>
-    <%= @project.description %>
-  </div>
-</div>
-
-<br>
-
-<div class="row">
-  <div class="large-6 columns">
-    <strong>Completed at:</strong><br>
-    <%= if @project.complete?
-      Formatter.format_time(@project.completed_at)
-    else
-      if @project.completable?
-        link_to('mark complete!', complete_project_path(@project))
-      else
-        '<a class="disabled">cannot complete with open tasks</a>'.html_safe
-      end
-    end %>
-  </div>
-
-  <div class="large-6 columns">
-    <strong>Team:</strong><br>
-    <%= link_to(@project.team_name, @project.team) %>
-  </div>
-</div>
-
-<br>
-
-<div class="row">
-  <div class="large-10 columns">
-    <strong>Tasks:</strong>
-  </div>
-  <div class="large-2 columns">
-    <%= link_to(new_task_path(task: {project_id: @project.id, parent_id: nil})) do -%>
-      <span class="button secondary tiny">New Task</span>
-    <%- end -%>
-  </div>
-</div>
-<hr>
-<div class="row">
-  <div class="large-12 columns">
-    <%= render 'shared/task_list_tree', { tasks: @project.tasks.roots } %> 
+  <div class="large-3 columns">
+    <div class="stats">
+      STATS GO HERE
+    </div>
   </div>
 </div>

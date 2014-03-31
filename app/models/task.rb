@@ -17,6 +17,10 @@ class Task < ActiveRecord::Base
     project.team.users
   end
 
+  def ordered_children(key = :created_at)
+    children.order(key)
+  end
+
   def owned?
     !owner_id.nil?
   end
